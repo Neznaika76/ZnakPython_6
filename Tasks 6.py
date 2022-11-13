@@ -45,25 +45,70 @@
 # элементов списка, как привести их к корректному виду. Можно ли при этом не создавать новый список?
 
 
-def izmenen1(x):
-    new = "Привет,  !"
-    izm = "".join(map(str, x))
-    izm = izm.lower()
-    i = len(izm)-1
-    j = 0
-    while izm[i] != ' ':
-        if izm[i-1] != ' ':
-            new = new[0] + new[1] + new[2] + new[3] + new[4] + new[5] + new[6] + new[7] + new[8] + izm[i] + new[9:]
-        else:
-            new = new[:8] + izm[i].upper() + new[9:]
-        i -= 1
-        j += 1
-    print(new)
-    return izm
+# def izmenen1(x):
+#     new = "Привет,  !"
+#     izm = "".join(map(str, x))
+#     izm = izm.lower()
+#     i = len(izm)-1
+#     j = 0
+#     while izm[i] != ' ':
+#         if izm[i-1] != ' ':
+#             new = new[0] + new[1] + new[2] + new[3] + new[4] + new[5] + new[6] + new[7] + new[8] + izm[i] + new[9:]
+#         else:
+#             new = new[:8] + izm[i].upper() + new[9:]
+#         i -= 1
+#         j += 1
+#     print(new)
+#     return izm
+#
+#
+# array = ['инженер-конструктор Игорь', 'главный бухгалтер МАРИНА', 'токарь высшего разряда нИКОЛАй', 'директор аэлита']
+# print(array)
+# for a in range(len(array)):
+#     array[a] = izmenen1(array[a])
+
+# 5. Создать список, содержащий цены на товары (10–20 товаров), например:
+# [57.8, 46.51, 97, ...]
+# Вывести на экран эти цены через запятую в одну строку, цена должна отображаться в
+# виде <r> руб <kk> коп (например «5 руб 04 коп»). Подумать, как из цены получить рубли и копейки,
+# как добавить нули, если, например, получилось 7 копеек или 0 копеек (должно быть 07 коп или 00 коп).
+# Вывести цены, отсортированные по возрастанию, новый список не создавать (доказать, что объект
+# списка после сортировки остался тот же).
+# Создать новый список, содержащий те же цены, но отсортированные по убыванию.
+# Вывести цены пяти самых дорогих товаров. Сможете ли вывести цены этих товаров по возрастанию, написав минимум кода?
+#
+import math
 
 
-array = ['инженер-конструктор Игорь', 'главный бухгалтер МАРИНА', 'токарь высшего разряда нИКОЛАй', 'директор аэлита']
+def vivod(arr):
+    x = math.trunc(arr)
+    st = str(arr)
+    per = '00'
+    for a in range(len(st)):
+        if st[a] == '.':
+            if a + 3 <= len(st):
+                per = per[:0] + st[a + 1]
+                per = per[:1] + st[a + 2]
+            else:
+                per = per[:0] + '0'
+                per = per[:1] + st[a + 1]
+    print(f"{x}руб. {per}коп.")
+
+
+array = [57.8, 46.51, 97, 4.67, 9.9, 01.1, 31]
 print(array)
 for a in range(len(array)):
-    array[a] = izmenen1(array[a])
-
+    vivod(array[a])
+print("Сортируем по возрастанию")
+for i in range(math.factorial(len(array))):
+    for j in range(len(array) - 1):
+        if array[j] > array[j + 1]:
+            array[j], array[j + 1] = array[j + 1], array[j]
+for a in range(len(array)):
+    vivod(array[a])
+print("Новый список по убыванию")
+new = []
+for j in range(len(array)):
+    new.append(array[len(array) - j - 1])
+for a in range(len(array)):
+    vivod(new[a])
