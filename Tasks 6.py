@@ -20,31 +20,31 @@ C:\ProgramData\SOLIDWORKS\SOLIDWORKS 2022\lang\russian\Costing templates
 # Главное: дополнить числа до двух разрядов нулём!
 
 
-def izmenen1(x):
-    izm = " ".join(map(str, x))
-    izm = '"' + izm[0] + '0' + izm[2:] + '"'
-    print(izm)
-    return izm
-
-def izmenen2(x):
-    izm = "".join(map(str, x))
-    izm = '"' + izm[0:] + '"'
-    print(izm)
-    return izm
-
-
-array = ['+1', 'в', '5,1', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов', '-1']
-print(array)
-for a in range(len(array)):
-    for k in ',':
-        if k not in array[a]:
-            j = 0
-            for s in '0123456789':
-                if s in array[a]:
-                    j += 1
-            if j == 1:
-                array[a] = izmenen1(array[a])
-            elif j == 2:
-                array[a] = izmenen2(array[a])
-
-print(array)
+# def izmenen1(x):
+#     izm = " ".join(map(str, x))
+#     izm = '"' + izm[0] + '0' + izm[2:] + '"'
+#     print(izm)
+#     return izm
+#
+# def izmenen2(x):
+#     izm = "".join(map(str, x))
+#     izm = '"' + izm[0:] + '"'
+#     print(izm)
+#     return izm
+#
+#
+# array = ['+1', 'в', '5,1', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов', '-1']
+# print(array)
+# for a in range(len(array)):
+#     for k in ',':
+#         if k not in array[a]:
+#             j = 0
+#             for s in '0123456789':
+#                 if s in array[a]:
+#                     j += 1
+#             if j == 1:
+#                 array[a] = izmenen1(array[a])
+#             elif j == 2:
+#                 array[a] = izmenen2(array[a])
+#
+# print(array)
